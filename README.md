@@ -8,7 +8,7 @@ Este projeto é uma aplicação para gerenciamento de clientes, com backend em J
 
 1. Clone o repositório:
    ```bash
-   [git clone https://github.com/leandromartins1912/cadastro-clientes.git](https://github.com/leandromartins1912/Eteg.git)
+   https://github.com/leandromartins1912/Eteg.git
    cd cadastro-clientes
 
 2. Construa e inicie os containers:
