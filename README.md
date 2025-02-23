@@ -25,7 +25,7 @@ Este projeto é uma aplicação para gerenciamento de clientes, com backend em J
 
 1. Backend: Navegue até o diretório api e execute:
    ```bash
-mvn spring-boot:run
+   mvn spring-boot:run
 
 2. Frontend: Navegue até o diretório frontend e instale as dependências:
    ```bash
