@@ -1,0 +1,31 @@
+# Diretórios e arquivos do Maven
+target/
+*.jar
+*.war
+*.ear
+*.iml
+
+# Diretórios e arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs e arquivos temporários
+logs/
+*.log
+*.tmp
+
+# Configurações e credenciais
+.env
+application.properties
+application.yml
+application-dev.properties
+application-prod.properties
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependências do Lombok e compilação
+.lombok/

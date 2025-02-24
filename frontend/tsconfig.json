@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "target": "ESNext",
+    "lib": ["ES2015", "DOM"],
+    "module": "ESNext",
+    "strict": true,
+    "jsx": "react-jsx"
+  }
+}

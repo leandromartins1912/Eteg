@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: cadastro-clientes-backend
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/cadastro-clientes
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    networks:
+      - postgres-compose-network
+
+  frontend:
+    container_name: cadastro-clientes-frontend
+    build:
+      context: ./
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    volumes:
+    - .:/app
+    - /app/node_modules 
+    environment:
+      - CHOKIDAR_USEPOLLING=true 
+    networks:
+      - postgres-compose-network
+
+  db:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cadastro-clientes
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - postgres-compose-network    
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "15432:80"
+    networks:
+      - postgres-compose-network
+
+networks:
+  postgres-compose-network:
+    driver: bridge
