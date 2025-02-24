@@ -16,7 +16,6 @@ logs/
 
 # Configurações e credenciais
 .env
-application.properties
 application.yml
 application-dev.properties
 application-prod.properties
