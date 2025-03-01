@@ -18,7 +18,7 @@ Este projeto é uma aplicação para gerenciamento de clientes, com backend em J
 3. Acesse a aplicação:
    
 - **Frontend: http://localhost:3001/clientes**
-- **Backend (API): http://localhost:8080**
+- **Backend (API): http://localhost:8080/api/clientes**
 - **Swagger UI: http://localhost:8080/swagger-ui/index.html#/**
 
 ### Sem Docker
