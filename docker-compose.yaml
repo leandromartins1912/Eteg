@@ -7,13 +7,14 @@ services:
       context: ./api
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
-    depends_on:
-      - db
+      - "8080:8080"    
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/cadastro-clientes
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
       - postgres-compose-network
 
@@ -44,10 +45,13 @@ services:
       POSTGRES_DB: cadastro-clientes
     ports:
       - "5432:5432"
-    volumes:
-      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - postgres-compose-network    
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
 
   pgadmin:
     container_name: pgadmin4
